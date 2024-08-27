@@ -7,7 +7,7 @@ class ForceUpdateWidget extends StatefulWidget {
   const ForceUpdateWidget({
     super.key,
     required this.child,
-    this.navigatorKey,
+    required this.navigatorKey,
     required this.forceUpdateClient,
     required this.allowCancel,
     required this.showForceUpdateAlert,
@@ -15,7 +15,7 @@ class ForceUpdateWidget extends StatefulWidget {
     this.onException,
   });
   final Widget child;
-  final GlobalKey<NavigatorState>? navigatorKey;
+  final GlobalKey<NavigatorState> navigatorKey;
   final ForceUpdateClient forceUpdateClient;
   final bool allowCancel;
   final Future<bool?> Function(BuildContext context, bool allowCancel)
@@ -76,7 +76,7 @@ class _ForceUpdateWidgetState extends State<ForceUpdateWidget>
   }
 
   Future<void> _triggerForceUpdate(Uri storeUrl) async {
-    final ctx = widget.navigatorKey?.currentContext ?? context;
+    final ctx = widget.navigatorKey.currentContext ?? context;
     // * setState not needed, just keeping track of alert visibility
     _isAlertVisible = true;
     final success = await widget.showForceUpdateAlert(ctx, widget.allowCancel);
