@@ -7,7 +7,7 @@
 
 A package for showing a force update prompt that is controlled remotely.
 
-![Force update alert preview](https://raw.githubusercontent.com/bizz84/force_update_helper/main/.github/images/screenshot-app-update-required.png)
+![Force update alert preview](.github/images/screenshot-app-update-required.png)
 
 ## Features
 
@@ -103,7 +103,7 @@ Here's how you may use this in production:
 
 The package is made of two classes: `ForceUpdateClient` and `ForceUpdateWidget`.
 
-- The `ForceUpdateClient` class works by fetching the required version and comparing it with the current version from [package_info_plus](https://pub.dev/packages/package_info_plus). Versions are compared using the [pub_semver](https://pub.dev/packages/pub_semver) package.
+- The `ForceUpdateClient` class fetches the required version and compares it with the [current version](https://pub.dev/documentation/package_info_plus/latest/package_info_plus/PackageInfo/version.html) from [package_info_plus](https://pub.dev/packages/package_info_plus). Versions are compared using the [pub_semver](https://pub.dev/packages/pub_semver) package.
 - The `fetchRequiredVersion` callback should fetch the required version from an API endpoint or Firebase Remote Config.
 - When creating your iOS app in App Store Connect, copy the app ID and use it as the `iosAppStoreId`, otherwise the force upgrade alert will not show. I recommend storing an `APP_STORE_ID` as an environment variable that is set with `--dart-define` or `--dart-define-from-file` and read with `String.fromEnvironment`.
 - The Play Store URL is automatically generated from the package name (which is retrieved with the [package_info_plus](https://pub.dev/packages/package_info_plus) package)
@@ -120,5 +120,13 @@ The package is made of two classes: `ForceUpdateClient` and `ForceUpdateWidget`.
         </intent>
     </queries>
 ```
+
+### Where to find the iosAppStoreId
+
+Once you have created your app in [App Store Connect](https://appstoreconnect.apple.com/), you can grab the app ID from the URL:
+
+![Force update alert preview](.github/images/app-store-connect-app-id.png)
+
+Make sure to set the correct `iosAppStoreId` **before** releasing the first version of your app.
 
 ### [LICENSE: MIT](LICENSE)
