@@ -1,4 +1,6 @@
-A simple server-side Dart implementing a `required_version` endpoint.
+# Force Update Helper - Example Dart Shelf App
+
+A simple server-side app that implements a `required_version` endpoint using [Dart Shelf](https://pub.dev/packages/shelf).
 
 This can be used as part of the force update logic in your Flutter apps.
 
@@ -19,16 +21,17 @@ curl http://0.0.0.0:8080/required_version
 Example usage in the Flutter app:
 
 ```dart
-final dio = Dio();
-// TODO: Replace with production URL on staging / prod flavors
-const baseUrl = 'http://0.0.0.0:8080';
-final response = await dio.get('$baseUrl/required_version');
-final requiredVersionStr = response.data;
-if (requiredVersionStr.isEmpty) {
-  log('Remote Config: required_version not set. Ignoring.', name: _name);
-  return false;
-}
-// TODO: Compare this with the app version from package_info_plus
+ForceUpdateClient(
+  fetchRequiredVersion: () async {
+    // TODO: Replace with production URL on staging / prod flavors
+    const baseUrl = 'http://0.0.0.0:8080';
+    final dio = Dio();
+    final response = await dio.get('$baseUrl/required_version');
+    final requiredVersionStr = response.data;
+    return requiredVersionStr;
+  },
+  ...
+)
 ```
 
 ## Deploying the server

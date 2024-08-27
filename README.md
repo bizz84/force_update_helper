@@ -149,6 +149,16 @@ Once you have created your app in [App Store Connect](https://appstoreconnect.ap
 
 Make sure to set the correct `iosAppStoreId` **before** releasing the first version of your app, otherwise users on old version won't be able to update.
 
+## Example usage with a remote server
+
+The package comes with a sample server-side app that implements a `required_version` endpoint using [Dart Shelf](https://pub.dev/packages/shelf).
+
+This can be used as part of the force update logic in your Flutter apps.
+
+For more info, see:
+
+- [example_server_dart_shelf](https://github.com/bizz84/force_update_helper/tree/main/example_server_dart_shelf)
+
 ## Are contributions welcome?
 
 I created this package so I can reuse the force update logic in my own apps.
