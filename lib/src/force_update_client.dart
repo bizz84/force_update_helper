@@ -58,7 +58,7 @@ class ForceUpdateClient {
       return null;
     }
     if (defaultTargetPlatform == TargetPlatform.iOS) {
-      // * On iOS, get the app ID as an environment variable
+      // * On iOS, use the given app ID
       return iosAppStoreId.isNotEmpty
           ? 'https://apps.apple.com/app/id$iosAppStoreId'
           : null;
