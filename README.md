@@ -103,7 +103,7 @@ Here's how you may use this in production:
 
 ## Additional details
 
-The package is made of two classes: `ForceUpdateClient` and `ForceUpdateWidget`.
+The package is made of two classes: [`ForceUpdateClient`](lib/src/force_update_client.dart) and [`ForceUpdateWidget`](lib/src/force_update_widget.dart).
 
 - The `ForceUpdateClient` class fetches the required version and compares it with the [current version](https://pub.dev/documentation/package_info_plus/latest/package_info_plus/PackageInfo/version.html) from [package_info_plus](https://pub.dev/packages/package_info_plus). Versions are compared using the [pub_semver](https://pub.dev/packages/pub_semver) package.
 - The `fetchRequiredVersion` callback should fetch the required version from an API endpoint or Firebase Remote Config.
