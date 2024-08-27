@@ -1,0 +1,12 @@
+name: example_server_dart_shelf
+description: A sample Dart Shelf backend with a required_version endpoint that can be used to implement the force-update logic in a Flutter app.
+version: 1.0.0
+
+environment:
+  sdk: ^3.5.1
+
+dependencies:
+  shelf: ^1.4.2
+
+dev_dependencies:
+  lints: ^4.0.0
