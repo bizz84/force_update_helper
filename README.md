@@ -8,7 +8,7 @@
 A package for showing a force update prompt that is controlled remotely.
 
 <p align="center">
-<img src=".github/images/screenshot-app-update-required.png" width="375" alt="Force update alert preview" />
+<img src="https://raw.githubusercontent.com/bizz84/force_update_helper/main/.github/images/screenshot-app-update-required.png" width="375" alt="Force update alert preview" />
 </p>
 
 ## Features
@@ -145,7 +145,7 @@ If the update alert shows on Android and the back button is pressed, it will be 
 
 Once you have created your app in [App Store Connect](https://appstoreconnect.apple.com/), you can grab the app ID from the browser URL:
 
-![Force update alert preview](.github/images/app-store-connect-app-id.png)
+![Force update alert preview](https://raw.githubusercontent.com/bizz84/force_update_helper/main/.github/images/app-store-connect-app-id.png)
 
 Make sure to set the correct `iosAppStoreId` **before** releasing the first version of your app, otherwise users on old version won't be able to update.
 
