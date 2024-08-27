@@ -7,7 +7,9 @@
 
 A package for showing a force update prompt that is controlled remotely.
 
-![Force update alert preview](.github/images/screenshot-app-update-required.png)
+<p align="center">
+<img src=".github/images/screenshot-app-update-required.png" width="375" alt="Force update alert preview" />
+</p>
 
 ## Features
 
@@ -121,7 +123,7 @@ The package is made of two classes: `ForceUpdateClient` and `ForceUpdateWidget`.
     </queries>
 ```
 
-### Where to find the iosAppStoreId
+### Where to find the `iosAppStoreId`
 
 Once you have created your app in [App Store Connect](https://appstoreconnect.apple.com/), you can grab the app ID from the URL:
 
