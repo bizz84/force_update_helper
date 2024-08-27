@@ -2,8 +2,8 @@
 
 [![Pub](https://img.shields.io/pub/v/force_update_helper.svg)](https://pub.dev/packages/force_update_helper)
 [![Language](https://img.shields.io/badge/dart-3.5.0-informational.svg)](https://dart.dev/)
-[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](http://mit-license.org)
-[![Twitter](https://img.shields.io/badge/twitter-@biz84-blue.svg)](http://twitter.com/biz84)
+[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://mit-license.org)
+[![Twitter](https://img.shields.io/badge/twitter-@biz84-blue.svg)](https://twitter.com/biz84)
 
 A package for showing a force update prompt that is controlled remotely.
 
