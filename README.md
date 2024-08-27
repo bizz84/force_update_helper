@@ -8,7 +8,7 @@
 A package for showing a force update prompt that is controlled remotely.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/bizz84/force_update_helper/main/.github/images/screenshot-app-update-required.png" width="375" alt="Force update alert preview" />
+<img src="https://raw.githubusercontent.com/bizz84/force_update_helper/main/.github/images/ios-update-app-store.png" alt="Force update alert preview" />
 </p>
 
 ## Features
