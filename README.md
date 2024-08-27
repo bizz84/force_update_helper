@@ -123,12 +123,38 @@ The package is made of two classes: `ForceUpdateClient` and `ForceUpdateWidget`.
     </queries>
 ```
 
-### Where to find the iosAppStoreId
+## When is the Force Update Alert shown?
+
+The force update logic is triggered in two cases:
+
+- when the app has just started (from a cold boot)
+- when the app returns to the foreground (common when switching between apps)
+
+Then, the update alert will show if **all** these conditions are true:
+
+- the app is running on iOS or Android (web and desktop are **not** supported)
+- the `requiredVersion` is fetched successfully
+- the `requiredVersion` is greater than the `currentVersion`
+- (iOS only) the `iosAppStoreId` is a non-empty string
+
+If the user clicks on "Update Now" and lands on the app store page but does **not** update the app, the force update alert **will show again** when returning to the app.
+
+If the update alert shows on Android and the back button is pressed, it will be shown again unless `allowCancel` is `true`.
+
+## Where to find the iosAppStoreId
 
 Once you have created your app in [App Store Connect](https://appstoreconnect.apple.com/), you can grab the app ID from the browser URL:
 
 ![Force update alert preview](.github/images/app-store-connect-app-id.png)
 
 Make sure to set the correct `iosAppStoreId` **before** releasing the first version of your app, otherwise users on old version won't be able to update.
+
+## Are contributions welcome?
+
+I created this package so I can reuse the force update logic in my own apps.
+
+While you're welcome to suggest improvements, I don't want the package to become bloated, and I only plan to make changes that suit my needs.
+
+If the package doesn't suit your use case, consider forking and maintaining it yourself.
 
 ### [LICENSE: MIT](LICENSE)
