@@ -107,7 +107,7 @@ The package is made of two classes: `ForceUpdateClient` and `ForceUpdateWidget`.
 
 - The `ForceUpdateClient` class fetches the required version and compares it with the [current version](https://pub.dev/documentation/package_info_plus/latest/package_info_plus/PackageInfo/version.html) from [package_info_plus](https://pub.dev/packages/package_info_plus). Versions are compared using the [pub_semver](https://pub.dev/packages/pub_semver) package.
 - The `fetchRequiredVersion` callback should fetch the required version from an API endpoint or Firebase Remote Config.
-- When creating your iOS app in App Store Connect, copy the app ID and use it as the `iosAppStoreId`, otherwise the force upgrade alert will not show. I recommend storing an `APP_STORE_ID` as an environment variable that is set with `--dart-define` or `--dart-define-from-file` and read with `String.fromEnvironment`.
+- When creating your iOS app in [App Store Connect](https://appstoreconnect.apple.com/), copy the app ID and use it as the `iosAppStoreId`, otherwise the force upgrade alert will not show. I recommend storing an `APP_STORE_ID` as an environment variable that is set with `--dart-define` or `--dart-define-from-file` and read with `String.fromEnvironment`.
 - The Play Store URL is automatically generated from the package name (which is retrieved with the [package_info_plus](https://pub.dev/packages/package_info_plus) package)
 - If you want to make the update optional, pass `allowCancel: true` to the `ForceUpdateWidget` and use it to add a cancel button to the alert dialog. This will make the alert dismissable, but the prompt will still show on the next app start.
 - You can catch and handle any exceptions with the `onException` handler. Alternatively, omit the `onException` and handle exceptions globally.
@@ -123,12 +123,12 @@ The package is made of two classes: `ForceUpdateClient` and `ForceUpdateWidget`.
     </queries>
 ```
 
-### Where to find the `iosAppStoreId`
+### Where to find the iosAppStoreId
 
-Once you have created your app in [App Store Connect](https://appstoreconnect.apple.com/), you can grab the app ID from the URL:
+Once you have created your app in [App Store Connect](https://appstoreconnect.apple.com/), you can grab the app ID from the browser URL:
 
 ![Force update alert preview](.github/images/app-store-connect-app-id.png)
 
-Make sure to set the correct `iosAppStoreId` **before** releasing the first version of your app.
+Make sure to set the correct `iosAppStoreId` **before** releasing the first version of your app, otherwise users on old version won't be able to update.
 
 ### [LICENSE: MIT](LICENSE)
