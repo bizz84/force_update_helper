@@ -64,7 +64,11 @@ class MainApp extends StatelessWidget {
           ),
           showStoreListing: (storeUrl) async {
             if (await canLaunchUrl(storeUrl)) {
-              await launchUrl(storeUrl, mode: LaunchMode.platformDefault);
+              await launchUrl(
+                storeUrl,
+                // * Open app store app directly (or fallback to browser)
+                mode: LaunchMode.externalApplication,
+              );
             } else {
               log('Cannot launch URL: $storeUrl');
             }

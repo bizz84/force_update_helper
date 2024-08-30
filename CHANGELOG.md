@@ -1,3 +1,7 @@
+## 0.1.3
+
+- Updated example app to use LaunchMode.externalApplication
+
 ## 0.1.2
 
 - Use https links in badges to improve pub score
