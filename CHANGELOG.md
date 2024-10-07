@@ -1,6 +1,10 @@
+## 0.1.4
+
+- Updated example app to fetch some remote config JSON from a GitHub Gist
+
 ## 0.1.3
 
-- Updated example app to use LaunchMode.externalApplication
+- Updated example app to use `LaunchMode.externalApplication`
 
 ## 0.1.2
 

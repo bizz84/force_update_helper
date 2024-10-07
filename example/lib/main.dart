@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:force_update_example/src/remote_config_gist_client.dart';
 import 'package:force_update_example/src/show_alert_dialog.dart';
 import 'package:force_update_helper/force_update_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,9 +24,13 @@ class MainApp extends StatelessWidget {
         return ForceUpdateWidget(
           navigatorKey: _rootNavigatorKey,
           forceUpdateClient: ForceUpdateClient(
-            // * Real apps should fetch this from an API endpoint or via
-            // * Firebase Remote Config
-            fetchRequiredVersion: () => Future.value('2.0.0'),
+            fetchRequiredVersion: () async {
+              // * Fetch remote config from an API endpoint.
+              // * Alternatively, you can use Firebase Remote Config
+              final client = RemoteConfigGistClient(dio: Dio());
+              final remoteConfig = await client.fetchRemoteConfig();
+              return remoteConfig.requiredVersion;
+            },
             // * Example ID from this app: https://fluttertips.dev/
             // * To avoid mistakes, store the ID as an environment variable and
             // * read it with String.fromEnvironment

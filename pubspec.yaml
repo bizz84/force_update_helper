@@ -1,6 +1,6 @@
 name: force_update_helper
 description: "A package for showing a force update prompt that is controlled remotely."
-version: 0.1.3
+version: 0.1.4
 homepage: https://codewithandrea.com/
 repository: https://github.com/bizz84/force_update_helper
 

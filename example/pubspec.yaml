@@ -12,6 +12,7 @@ dependencies:
   url_launcher: ^6.3.0
   force_update_helper:
     path: ../
+  dio: ^5.7.0
 
 dev_dependencies:
   flutter_test:
