@@ -1,3 +1,7 @@
+## 0.1.5
+
+- Updated supported platforms: Android, iOS
+
 ## 0.1.4
 
 - Updated example app to fetch some remote config JSON from a GitHub Gist
