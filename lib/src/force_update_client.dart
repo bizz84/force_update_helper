@@ -60,7 +60,7 @@ class ForceUpdateClient {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       // * On iOS, use the given app ID
       return iosAppStoreId.isNotEmpty
-          ? 'https://apps.apple.com/app/id$iosAppStoreId'
+          ? 'https://apps.apple.com/app/id/$iosAppStoreId'
           : null;
     } else if (defaultTargetPlatform == TargetPlatform.android) {
       final packageInfo = await PackageInfo.fromPlatform();
