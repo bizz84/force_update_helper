@@ -8,7 +8,7 @@ platforms:
   ios:
 
 environment:
-  sdk: ^3.5.1
+  sdk: ^3.5.0
   flutter: ">=3.22.0"
 
 dependencies:
