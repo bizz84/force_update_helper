@@ -1,3 +1,7 @@
+## 0.1.6
+
+- Minimum required Dart version: 3.5.0
+
 ## 0.1.5
 
 - Updated supported platforms: Android, iOS
