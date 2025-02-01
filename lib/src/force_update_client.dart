@@ -32,13 +32,10 @@ class ForceUpdateClient {
     }
     final packageInfo = await PackageInfo.fromPlatform();
 
-    // * On Android, the current version shows as `X.Y.Z.flavor`
-    // * But semver can only parse this if it's formatted as `X.Y.Z-flavor`
+    // * On Android, the current version may appear as `^X.Y.Z(.*)`
+    // * But semver can only parse this if it's formatted as `^X.Y.Z-(.*)`
     // * and we only care about X.Y.Z, so we can remove the flavor
-    const flavorStr = appFlavor ?? '';
-    final currentVersionStr = flavorStr.isEmpty
-        ? packageInfo.version
-        : packageInfo.version.replaceAll('.$flavorStr', '');
+    final currentVersionStr = RegExp(r'\d+\.\d+\.\d+').matchAsPrefix(packageInfo.version)!.group(0)!;
 
     // * Parse versions in semver format
     final requiredVersion = Version.parse(requiredVersionStr);
