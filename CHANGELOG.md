@@ -1,3 +1,7 @@
+## 0.1.7
+
+- Fix `packageInfo.version` parsing on Android
+
 ## 0.1.6
 
 - Minimum required Dart version: 3.5.0
