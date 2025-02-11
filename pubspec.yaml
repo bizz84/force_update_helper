@@ -16,6 +16,8 @@ dependencies:
     sdk: flutter
   package_info_plus: ^8.0.2
   pub_semver: ^2.1.4
+  device_info_plus: ^11.3.0
+  google_api_availability: ^5.0.0
 
 dev_dependencies:
   flutter_test:
