@@ -1,3 +1,11 @@
+## 0.2.1
+
+- **BREAKING**: Remove `fetchCurrentPatchVersion` callback (it was not properly implemented)
+
+## 0.2.0
+
+- Add `fetchCurrentPatchVersion` callback to fetch the current patch version from code push solutions like Shorebird
+
 ## 0.1.7
 
 - Fix `packageInfo.version` parsing on Android
