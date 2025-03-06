@@ -48,7 +48,7 @@ class ForceUpdateClient {
     // * and we only care about X.Y.Z, so we can remove the flavor
     final currentVersionStr =
         RegExp(r'\d+\.\d+\.\d+').matchAsPrefix(currentVersion)!.group(0)!;
-        RegExp(r'\d+\.\d+\.\d+').matchAsPrefix(packageInfo.version)!.group(0)!;
+    RegExp(r'\d+\.\d+\.\d+').matchAsPrefix(packageInfo.version)!.group(0)!;
 
     // * Parse versions in semver format
     final parsedRequiredVersion = Version.parse(requiredVersionStr);
@@ -78,7 +78,6 @@ class ForceUpdateClient {
       final packageInfo = await PackageInfo.fromPlatform();
       if (await isHuaweiOrHarmonyWithoutGMS()) {
         // * On Huawei devices without GMS, use the Huawei AppGallery ID
-
         return 'appmarket://details?id=${packageInfo.packageName}';
       }
       // * On Android, use the package name from PackageInfo
