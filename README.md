@@ -49,6 +49,12 @@ class MainApp extends StatelessWidget {
             // * Real apps should fetch this from an API endpoint or via
             // * Firebase Remote Config
             fetchRequiredVersion: () => Future.value('2.0.0'),
+            // * Optional callback to fetch the current patch version from code push solutions like Shorebird
+            fetchCurrentPatchVersion: () {
+              // * More info here: https://pub.dev/packages/shorebird_code_push
+              final updater = ShorebirdUpdater();
+              return updater.readCurrentPatch();
+            }
             // * Example ID from this app: https://fluttertips.dev/
             // * To avoid mistakes, store the ID as an environment variable and
             // * read it with String.fromEnvironment
@@ -110,6 +116,7 @@ Here's how you may use this in production:
 The package is made of two classes: [`ForceUpdateClient`](lib/src/force_update_client.dart) and [`ForceUpdateWidget`](lib/src/force_update_widget.dart).
 
 - The `ForceUpdateClient` class fetches the required version and compares it with the [current version](https://pub.dev/documentation/package_info_plus/latest/package_info_plus/PackageInfo/version.html) from [package_info_plus](https://pub.dev/packages/package_info_plus). Versions are compared using the [pub_semver](https://pub.dev/packages/pub_semver) package.
+- If a `fetchCurrentPatchVersion` callback is provided and it returns a non-null value, it will be used instead of the current version returned by `package_info_plus`. This is useful if you use code push solutions like [Shorebird](https://pub.dev/packages/shorebird_code_push).
 - The `fetchRequiredVersion` callback should fetch the required version from an API endpoint or Firebase Remote Config.
 - When creating your iOS app in [App Store Connect](https://appstoreconnect.apple.com/), copy the app ID and use it as the `iosAppStoreId`, otherwise the force upgrade alert will not show. I recommend storing an `APP_STORE_ID` as an environment variable that is set with `--dart-define` or `--dart-define-from-file` and read with `String.fromEnvironment`.
 - The Play Store URL is automatically generated from the package name (which is retrieved with the [package_info_plus](https://pub.dev/packages/package_info_plus) package)
