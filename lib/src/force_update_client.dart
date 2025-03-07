@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:google_api_availability/google_api_availability.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:pub_semver/pub_semver.dart';
 
@@ -46,6 +48,7 @@ class ForceUpdateClient {
     // * and we only care about X.Y.Z, so we can remove the flavor
     final currentVersionStr =
         RegExp(r'\d+\.\d+\.\d+').matchAsPrefix(currentVersion)!.group(0)!;
+    RegExp(r'\d+\.\d+\.\d+').matchAsPrefix(packageInfo.version)!.group(0)!;
 
     // * Parse versions in semver format
     final parsedRequiredVersion = Version.parse(requiredVersionStr);
@@ -70,7 +73,13 @@ class ForceUpdateClient {
           ? 'https://apps.apple.com/app/id$iosAppStoreId'
           : null;
     } else if (defaultTargetPlatform == TargetPlatform.android) {
+      // * On Android, use the Huawei AppGallery ID if available
+
       final packageInfo = await PackageInfo.fromPlatform();
+      if (await isHuaweiOrHarmonyWithoutGMS()) {
+        // * On Huawei devices without GMS, use the Huawei AppGallery ID
+        return 'appmarket://details?id=${packageInfo.packageName}';
+      }
       // * On Android, use the package name from PackageInfo
       return 'https://play.google.com/store/apps/details?id=${packageInfo.packageName}';
     } else {
@@ -78,5 +87,33 @@ class ForceUpdateClient {
           name: _name);
       return null;
     }
+  }
+
+  Future<bool> isHuaweiOrHarmonyWithoutGMS() async {
+    final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    final androidInfo = await deviceInfo.androidInfo;
+
+    // Normalize brand and manufacturer for case-insensitive comparison
+    final String brand = androidInfo.brand.toLowerCase();
+    final String manufacturer = androidInfo.manufacturer.toLowerCase();
+
+    // Check if the device is a Huawei device
+    final bool isHuawei =
+        brand.contains('huawei') || manufacturer.contains('huawei');
+
+    // Check if the device is running HarmonyOS
+    final bool isHarmonyOS = androidInfo.version.sdkInt == 0 ||
+        androidInfo.version.release.toLowerCase().contains('harmony');
+
+    // Check if Google Mobile Services (GMS) is available
+    final GooglePlayServicesAvailability gmsAvailability =
+        await GoogleApiAvailability.instance
+            .checkGooglePlayServicesAvailability();
+
+    final bool hasGMS =
+        gmsAvailability == GooglePlayServicesAvailability.success;
+
+    // Return true if the device is Huawei or HarmonyOS and does not have GMS
+    return (isHuawei || isHarmonyOS) && !hasGMS;
   }
 }
